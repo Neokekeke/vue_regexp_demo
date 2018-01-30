@@ -4,22 +4,33 @@
 <template>
   <div class="loginReg">
 
-
-<validator name="validator">
-<form>
     <div class="text">
-      <input type="text" autofocus="autofocus"  v-model="text1" />
+      <input
+        type="text"
+        autofocus="autofocus"
+        v-model="username"
+        v-validate="'required|min:3|alpha'"
+        placeholder="用户名"
+        name="username"
+      />
     </div>
+    <span class="warn"  v-show="errors.has('username')">{{ errors.first('username') }}</span>
 
     <div class="text">
-      <input type="password"/>
+      <input type="password"
+            placeholder="密码"
+            v-model="password"
+            v-validate="'min:6'"
+            name="pwd"
+            />
     </div>
+    <span class="warn"  v-show="errors.has('pwd')">{{ errors.first('pwd') }}</span>
 
     <div class="content">
-      登录校验的内容
+      <button @click="login">登录</button>
     </div>
-</form>
-</validator>
+
+    <div id="user"></div>
 
   </div>
 </template>
@@ -29,8 +40,8 @@
 export default {
   data () {
     return {
-
-
+      username : '',
+      password : ''
     };
   },
 
@@ -40,7 +51,17 @@ export default {
 
   //mounted: {},
 
-  methods: {}
+  methods: {
+    login(){
+      if(this.errors){
+        var user = document.getElementById('user');
+        user.innerHTML =`<span class="user">
+            Welcome &nbsp; ${this.username} &nbsp; ~
+          </span>`;
+      }
+    },
+
+  }
 }
 
 </script>
@@ -68,6 +89,26 @@ export default {
   .content{
     margin: 30px 0 0 0;
     font-size: 25px;
+    font-weight: 600;
+  }
+
+  .warn{
+    display: block;
+    color: red;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 15px 0 15px 0;
+  }
+
+  #user{
+    width: 600px;
+    height: 30px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .user{
+    font-size: 30px;
     font-weight: 600;
   }
 

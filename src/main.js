@@ -4,8 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// 加入vue的validator验证器
-import validator from './validator/validator'
+// 加入vue的validator验证器,不好用
+//import validator from './validator/validator'
+
+// 用了vee-validate验证器
+import validate from './validator/validator'
+
 
 Vue.config.productionTip = false
 

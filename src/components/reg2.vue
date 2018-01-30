@@ -3,7 +3,15 @@
 -->
 <template>
   <div>
-    邮箱校验的内容
+     <div>
+        <label for="email">邮箱：</label>
+        <input
+          v-validate ="'required|email'"
+          type="text"
+          id="email"
+          name="myEmail">
+    </div>
+    <span v-show="errors.has('myEmail')">{{ errors.first('myEmail')}}</span>
   </div>
 </template>
 
@@ -11,14 +19,13 @@
 export default {
   data () {
     return {
+     
     };
   },
 
   components: {},
 
   computed: {},
-
-  mounted: {},
 
   methods: {}
 }
