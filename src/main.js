@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// 加入vue的validator验证器
+import validator from './validator/validator'
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

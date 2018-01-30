@@ -3,9 +3,11 @@
   <div class="header">
 
     <!-- 图片 -->
-    <span class="indeximg">
-      <router-link></router-link>
-    </span>
+
+      <router-link to="/">
+      <span class="indeximg">    </span>
+      </router-link>
+
 
     <!-- 头部路由导航 -->
       <ul>
@@ -68,7 +70,7 @@ ul li{
   line-height: 150px;
   width: 160px;
   float: left;
-  border: 0;
+  border-radius: 5px;
 }
 
 a{
@@ -80,30 +82,33 @@ a{
 
 .login{
   background-color: rgb(79, 117, 243);
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .mail{
   background-color: rgb(16, 202, 187);
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .regexper{
   background-color: rgb(23, 231, 75);
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .login:hover{
+  opacity: 1;
   transition: 0.6s;
   transform: scale(1.005);
 }
 
 .mail:hover{
+  opacity: 1;
   transition: 0.6s;
   transform: scale(1.005);
 }
 
 .regexper:hover{
+  opacity: 1;
   transition: 0.6s;
   transform: scale(1.005);
 }

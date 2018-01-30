@@ -5,8 +5,10 @@
   <div class="loginReg">
 
 
+<validator name="validator">
+<form>
     <div class="text">
-      <input type="text" autofocus="autofocus" v-model="username"/>
+      <input type="text" autofocus="autofocus"  v-model="text1" />
     </div>
 
     <div class="text">
@@ -16,11 +18,14 @@
     <div class="content">
       登录校验的内容
     </div>
+</form>
+</validator>
 
   </div>
 </template>
 
 <script>
+
 export default {
   data () {
     return {
