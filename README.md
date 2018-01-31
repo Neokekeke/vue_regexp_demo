@@ -1,6 +1,8 @@
 # regexp_demo
 
-> A Vue.js project
+> 使用了vee-validate插件和vue-router，自定义正则校验。
+
+![](https://raw.githubusercontent.com/Neokekeke/vue_regexp_demo/master/src/assets/regexp.png)
 
 ## Build Setup
 
