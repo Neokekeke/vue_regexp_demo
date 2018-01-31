@@ -4,6 +4,7 @@ import Index from '../components/Index.vue'
 
 import Reg1 from '../components/reg1.vue'
 import Reg2 from '../components/reg2.vue'
+import Regexper from '../components/regexper.vue'
 
 Vue.use(Router)
 
@@ -28,7 +29,7 @@ export default new Router({
         {
           path : 'regexper',
           name : 'regexper',
-          redirect : 'https://regexper.com/'
+          component : Regexper
         }
       ]
     }

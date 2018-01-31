@@ -20,7 +20,7 @@ const config = {
     pristine: 'pristine', // control has not been interacted with
     dirty: 'dirty' // control has been interacted with
   },
-  events: 'blur', // 默认是input|blur ,就是在用户输入和表单失去焦点时都进行校验，这里我改成了blur，即只有失去焦点时才开始验证
+  events: 'input', // 默认是input|blur ,就是在用户输入和表单失去焦点时都进行校验，这里我改成了blur，即只有失去焦点时才开始验证
   inject: true
 };
 
@@ -57,6 +57,16 @@ Validator.extend('word',{
     return /^[a-z][A-Z]$/.test(value);
   }
 });
+
+Validator.extend('pwd',{
+  messages : {
+    zh_CN : () => '请输入正确的密码不包含*_%'
+  },
+  validate : value => {
+    return /[a-z][A-Z][0-9]/.test(value);
+  }
+
+})
 
 
 

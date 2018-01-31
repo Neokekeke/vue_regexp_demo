@@ -2,8 +2,11 @@
   <div id="app">
     <Header></Header>
 
+    <div class="box">
     <!-- 这里渲染的是index子路由 -->
     <router-view></router-view>
+
+    </div>
 
   </div>
 </template>
@@ -83,4 +86,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.box{
+  background: url('./assets/index.jpg') center center no-repeat;
+  width: 700px;
+  height: 525px;
+  margin: 10px auto;
+  transition: transform 0.5s;
+}
+
+.box:hover{
+  transform: scale(1.02);
+}
+
 </style>

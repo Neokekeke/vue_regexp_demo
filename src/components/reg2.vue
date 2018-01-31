@@ -3,13 +3,15 @@
 -->
 <template>
   <div>
-     <div>
-        <label for="email">邮箱：</label>
+     <div class="email">
+        <label for="email"></label>
         <input
           v-validate ="'required|email'"
           type="text"
           id="email"
-          name="myEmail">
+          name="myEmail"
+          placeholder="邮箱"
+        >
     </div>
     <span v-show="errors.has('myEmail')">{{ errors.first('myEmail')}}</span>
   </div>
@@ -19,7 +21,7 @@
 export default {
   data () {
     return {
-     
+
     };
   },
 
@@ -32,4 +34,16 @@ export default {
 
 </script>
 <style scoped>
+.email{
+  margin: 30px auto;
+  width: 390px;
+  height: 45px;
+}
+
+.email input{
+  width: 100%;
+  height: 100%;
+  font-size: 27px;
+}
+
 </style>

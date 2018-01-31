@@ -1,4 +1,6 @@
 <!--
+import { Vue } from 'vue/types/vue';
+import { Vue } from 'vue/types/vue';
   这里写的是登录校验页面
  -->
 <template>
@@ -20,14 +22,16 @@
       <input type="password"
             placeholder="密码"
             v-model="password"
-            v-validate="'min:6'"
-            name="pwd"
+            v-validate="'required|min:6'"
+            name="password"
             />
     </div>
-    <span class="warn"  v-show="errors.has('pwd')">{{ errors.first('pwd') }}</span>
+    <span class="warn"  v-show="errors.has('password')">{{ errors.first('password') }}</span>
 
     <div class="content">
-      <button @click="login">登录</button>
+      <button @click="login"
+      :class="['button' , actived ? 'active' : 'button']">
+      登录</button>
     </div>
 
     <div id="user"></div>
@@ -36,29 +40,51 @@
 </template>
 
 <script>
-
+import Vue from 'vue'
 export default {
   data () {
     return {
       username : '',
-      password : ''
+      password : '',
     };
   },
 
   components: {},
 
-  computed: {},
+  computed: {
+      actived(){
+        if(this.username != '' && this.password != '' && this.errors.items.length == 0){
+          return true;
+        }
+        return false;
+      }
+  },
 
   //mounted: {},
 
   methods: {
     login(){
-      if(this.errors){
-        var user = document.getElementById('user');
-        user.innerHTML =`<span class="user">
-            Welcome &nbsp; ${this.username} &nbsp; ~
+      const user = document.getElementById('user');
+      if(this.username != '' && this.password != '' && this.errors.items.length == 0){
+        user.innerHTML =`<span class="aa">
+            Welcome &nbsp; <i>${this.username}</i> &nbsp; ~
+          </span>`;
+
+        // 把username的值传给index
+        var globalBus = new Vue();
+        globalBus.$emit('getUsername',this.username);
+      }
+      else if(this.username == '' && this.password == ''){
+        user.innerHTML = `<span>
+            用户名和密码不能同时为空哟~
           </span>`;
       }
+      else if(this.username == '' || this.password == ''){
+        user.innerHTML = `<span>
+            用户名或密码为空哦~
+          </span>`;
+      }
+      //return user.innerHTML = '';
     },
 
   }
@@ -69,7 +95,7 @@ export default {
 
   .loginReg{
     width: 700px;
-    margin: 30px auto;
+    margin: 10px auto;
   }
 
   .text{
@@ -83,13 +109,17 @@ export default {
     margin: 10px 0 10px 0;
     width: 100%;
     height: 100%;
-    font-size: 30px;
+    font-size: 25px;
+    background-color: rgb(247, 242, 242);
+    border-radius: 10px;
   }
 
   .content{
     margin: 30px 0 0 0;
     font-size: 25px;
     font-weight: 600;
+    justify-content: center;
+    align-items: center;
   }
 
   .warn{
@@ -105,11 +135,30 @@ export default {
     height: 30px;
     margin: 20px auto;
     text-align: center;
+    font-size: 20px;
+    font-weight: 500;
   }
 
-  .user{
-    font-size: 30px;
-    font-weight: 600;
+  .content button{
+    border: 0;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 20px;
+    line-height: 50px;
+  }
+
+  .content button:hover{
+    background-color: orangered;
+    color: #fff;
+    opacity: 1;
+    cursor: pointer;
+  }
+
+  .active{
+    background-color: orangered;
+    color: #fff;
+    opacity: 0.7;
   }
 
 </style>
